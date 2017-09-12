@@ -29,7 +29,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        logger.log(Level.INFO , "type commands in this form : [algo type: simple, bradley, otsu] [path to file if you use simple algo type ] [threshold if need]\n examples of input commands:\n simple input.jpg 100\n otsu input.jpg\n bradley input.jpg");
+        logger.log(Level.INFO , "type commands in this form : [algo type: simple, bradley, otsu] [path to file ] [threshold if you use simple algo type]\n examples of input commands:\n simple input.jpg 100\n otsu input.jpg\n bradley input.jpg");
 
 
         Scanner scanner = new Scanner(System.in);
