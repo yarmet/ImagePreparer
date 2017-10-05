@@ -9,12 +9,12 @@ public class InputParamsUtil {
 
     public static InputParams obtain() {
 
-        String algoType = null;
+        String algoType;
         int threshold = 0;
         String inputImagePath;
 
-
         Scanner scanner = new Scanner(System.in);
+
         algoType = obtainAlgoName(scanner);
 
 
@@ -29,6 +29,8 @@ public class InputParamsUtil {
         return new InputParams(algoType, threshold, inputImagePath);
     }
 
+
+
     private static String obtainInputImagePath(Scanner scanner) {
         String inputImagePath = null;
         boolean askAgain = true;
@@ -36,18 +38,23 @@ public class InputParamsUtil {
         do {
             System.out.println("enter path to image");
             String inputLine = scanner.nextLine();
+
             if (inputLine.equals(Commands.EXIT)) System.exit(0);
 
             File f = new File(inputLine);
             if (f.exists() && !f.isDirectory()) {
-                inputImagePath =inputLine;
+                inputImagePath = inputLine;
                 askAgain = false;
             } else {
                 System.out.println("this file is not found");
             }
+
         } while (askAgain);
+
         return inputImagePath;
     }
+
+
 
     private static int obtainThresholdValue(Scanner scanner) {
         boolean askAgain;
@@ -67,10 +74,12 @@ public class InputParamsUtil {
                 askAgain = true;
                 System.out.println("value not correct");
             }
-        } while (askAgain);
-        return threshold;
 
+        } while (askAgain);
+
+        return threshold;
     }
+
 
 
     static String obtainAlgoName(Scanner scanner) {
@@ -90,7 +99,9 @@ public class InputParamsUtil {
                 System.out.println("algo name not correct");
                 askAgain = true;
             }
+
         } while (askAgain);
+
         return algoType;
     }
 

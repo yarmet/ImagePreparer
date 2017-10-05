@@ -36,11 +36,16 @@ public class Main {
                 imageUtil = new BradlyConverter();
                 break;
             }
+            default:{
+                System.out.println("unknown algo name");
+                System.exit(0);
+            }
         }
 
         BufferedImage bufferedImage = imageUtil.loadImage(inputParams.getPathToImage());
         imageUtil.convert(bufferedImage);
         imageUtil.save(OUTPUT_FILE_NAME, OUTPUT_FILE_NAME_EXTENSION, bufferedImage);
+        System.out.println("done");
     }
 
 }

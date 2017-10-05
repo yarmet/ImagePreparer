@@ -11,11 +11,9 @@ public interface ImageUtil {
     void convert(BufferedImage img);
 
 
-
-
     default void save(String fileName, String extension, BufferedImage bufferedImage) throws IOException {
-        File outputfile = new File(fileName.concat(".").concat(extension));
-        ImageIO.write(bufferedImage, extension, outputfile);
+        File outputFile = new File(fileName.concat(".").concat(extension));
+        ImageIO.write(bufferedImage, extension, outputFile);
     }
 
     default BufferedImage loadImage(String path) throws IOException {
