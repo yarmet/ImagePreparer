@@ -10,7 +10,7 @@ public interface ImageUtil {
 
     void convert(BufferedImage img);
 
-    void convertWithThreshold(BufferedImage img, int threshold);
+
 
 
     default void save(String fileName, String extension, BufferedImage bufferedImage) throws IOException {

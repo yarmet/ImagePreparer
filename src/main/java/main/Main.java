@@ -29,7 +29,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        logger.log(Level.INFO , "type commands in this form : [algo type: simple, bradley, otsu] [path to file ] [threshold if you use simple algo type]\n examples of input commands:\n simple input.jpg 100\n otsu input.jpg\n bradley input.jpg");
+        logger.log(Level.INFO, "type commands in this form : [algo type: simple, bradley, otsu] [path to file ] [threshold if you use simple algo type]\n examples of input commands:\n simple input.jpg 100\n otsu input.jpg\n bradley input.jpg");
 
 
         Scanner scanner = new Scanner(System.in);
@@ -56,7 +56,7 @@ public class Main {
 
 
         BufferedImage bufferedImage;
-        ImageUtil imageUtil;
+        ImageUtil imageUtil = null;
 
 
         switch (algoType) {
@@ -68,34 +68,29 @@ public class Main {
                     threshold = Integer.valueOf(commands[2]);
                     if (threshold < 0 || threshold > 255) throw new Exception();
                 } catch (Exception e) {
-                    logger.log(Level.INFO, "if you are using a type of imageUtil \"is simply\" you must specify a threshold value as the third parameter (1-255)");
+                    logger.log(Level.INFO, "if you are using algo-type  of imageUtil \"is simply\" you must specify a threshold value as the third parameter (1-255)");
                     System.exit(1);
                 }
-
-                imageUtil = new SimpleConverter();
-                bufferedImage = imageUtil.loadImage(path);
-                imageUtil.convertWithThreshold(bufferedImage, threshold);
-                imageUtil.save(OUTPUT_FILE_NAME, OUTPUT_FILE_NAME_EXTENSION, bufferedImage);
+                imageUtil = new SimpleConverter(threshold);
                 break;
             }
 
             case otsu: {
                 imageUtil = new OtsuConverter();
-                bufferedImage = imageUtil.loadImage(path);
-                imageUtil.convert(bufferedImage);
-                imageUtil.save(OUTPUT_FILE_NAME, OUTPUT_FILE_NAME_EXTENSION, bufferedImage);
                 break;
             }
 
             case bradley: {
                 imageUtil = new BradlyConverter();
-                bufferedImage = imageUtil.loadImage(path);
-                imageUtil.convert(bufferedImage);
-                imageUtil.save(OUTPUT_FILE_NAME, OUTPUT_FILE_NAME_EXTENSION, bufferedImage);
                 break;
             }
 
         }
+
+
+        bufferedImage = imageUtil.loadImage(path);
+        imageUtil.convert(bufferedImage);
+        imageUtil.save(OUTPUT_FILE_NAME, OUTPUT_FILE_NAME_EXTENSION, bufferedImage);
 
     }
 

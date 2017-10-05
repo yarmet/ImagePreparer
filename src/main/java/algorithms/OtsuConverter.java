@@ -86,9 +86,4 @@ public class OtsuConverter implements ImageUtil {
         }
     }
 
-    @Override
-    public void convertWithThreshold(BufferedImage img, int threshold) {
-        throw new UnsupportedOperationException("method is not supported in this algorithm");
-    }
-
 }

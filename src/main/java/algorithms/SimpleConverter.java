@@ -9,13 +9,14 @@ import java.awt.image.BufferedImage;
 public class SimpleConverter implements ImageUtil {
 
 
-    @Override
-    public void convert(BufferedImage img) {
-        throw new UnsupportedOperationException("method is not supported in this algorithm");
+    private int threshold;
+
+    public SimpleConverter(int threshold) {
+        this.threshold = threshold;
     }
 
     @Override
-    public void convertWithThreshold(BufferedImage bufferedImage, int threshold) {
+    public void convert(BufferedImage bufferedImage) {
         int width = bufferedImage.getWidth();
         int height = bufferedImage.getHeight();
         for (int i = 0; i < width; i++)
