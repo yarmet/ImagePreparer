@@ -17,18 +17,14 @@ public class InputParamsUtil {
 
         algoType = obtainAlgoName(scanner);
 
-
         if (algoType.equals(Commands.SIMPLE)) {
             threshold = obtainThresholdValue(scanner);
         }
 
-
         inputImagePath = obtainInputImagePath(scanner);
-
 
         return new InputParams(algoType, threshold, inputImagePath);
     }
-
 
 
     private static String obtainInputImagePath(Scanner scanner) {
@@ -46,18 +42,16 @@ public class InputParamsUtil {
                 inputImagePath = inputLine;
                 askAgain = false;
             } else {
-                System.out.println("this file is not found");
+                System.out.println("file not found");
             }
-
         } while (askAgain);
 
         return inputImagePath;
     }
 
 
-
     private static int obtainThresholdValue(Scanner scanner) {
-        boolean askAgain;
+        boolean askAgain = true;
         int threshold = 0;
 
         do {
@@ -71,19 +65,16 @@ public class InputParamsUtil {
                 if (threshold > 255 || threshold < 0) throw new NumberFormatException();
                 askAgain = false;
             } catch (NumberFormatException e) {
-                askAgain = true;
                 System.out.println("value not correct");
             }
-
         } while (askAgain);
 
         return threshold;
     }
 
 
-
     static String obtainAlgoName(Scanner scanner) {
-        boolean askAgain = false;
+        boolean askAgain = true;
         String algoType = null;
 
         do {
@@ -96,10 +87,8 @@ public class InputParamsUtil {
             } else if (inputLine.equals(Commands.EXIT)) {
                 System.exit(0);
             } else {
-                System.out.println("algo name not correct");
-                askAgain = true;
+                System.out.println("algo name's not correct");
             }
-
         } while (askAgain);
 
         return algoType;
